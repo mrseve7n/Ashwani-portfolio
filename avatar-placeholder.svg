@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <!-- Soft shadow for placeholder silhouette -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Circular background with modern gradient -->
+  <rect width="200" height="200" rx="100" fill="url(#avatarGradient)" />
+
+  <!-- Subtle ring border -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="4" />
+
+  <!-- Avatar silhouette group -->
+  <g fill="#ffffff" opacity="0.95" filter="url(#dropShadow)">
+    <!-- Head -->
+    <circle cx="100" cy="78" r="34" />
+    <!-- Shoulders / Torso -->
+    <path d="M45,166 C45,128 70,120 100,120 C130,120 155,128 155,166 C140,178 121,185 100,185 C79,185 60,178 45,166 Z" />
+  </g>
+</svg>

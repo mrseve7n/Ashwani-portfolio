@@ -1,0 +1,476 @@
+/* ==========================================================================
+   TABLE OF CONTENTS:
+   1. CSS Variables / Theme Colors (Easy customization for beginners!)
+   2. Base & Reset Styles
+   3. Layout & Main Container
+   4. Profile Header (Avatar, Name, Tagline)
+   5. Card Components & Typography
+   6. Skills / Tags Section
+   7. Links & Social Buttons
+   8. Footer
+   9. Dark Mode (Automatic based on device theme)
+   10. Responsive Tweaks (Mobile Screens)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES (THEME COLORS)
+   Change these values to personalize your site's color palette!
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --bg-page: #f8fafc;           /* Light soft background */
+  --bg-card: #ffffff;           /* Card background */
+  --text-primary: #0f172a;      /* Main heading & text color */
+  --text-secondary: #475569;    /* Subtitle and paragraph color */
+  --text-muted: #64748b;        /* Subtle details, dates, icons */
+  
+  --primary-color: #4f46e5;     /* Accent brand color (Indigo) */
+  --primary-hover: #4338ca;     /* Hover state for primary color */
+  --border-color: #e2e8f0;      /* Subtle borders */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  
+  /* Sizing & Borders */
+  --border-radius-card: 16px;
+  --border-radius-button: 12px;
+  --transition-speed: 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE & RESET STYLES
+   Ensures consistent spacing and sizing across all web browsers.
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+  padding: 2.5rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT & MAIN CONTAINER
+   Keeps content centered and readable on both phones and desktops.
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. PROFILE HEADER
+   Displays the photo placeholder, full name, tagline, and location.
+   -------------------------------------------------------------------------- */
+.profile-header {
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg-card);
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  display: block;
+  transition: transform var(--transition-speed);
+}
+
+.avatar:hover {
+  transform: scale(1.03);
+}
+
+.profile-name {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.profile-title {
+  font-size: 1.05rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.profile-location {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.location-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. CARD COMPONENTS & TYPOGRAPHY
+   Cards provide a clean container for each content section.
+   -------------------------------------------------------------------------- */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-card);
+  padding: 1.75rem;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.bio-card p {
+  margin-bottom: 0.85rem;
+}
+
+.bio-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. SKILLS / TAGS SECTION
+   Visual pills highlighting tools and capabilities.
+   -------------------------------------------------------------------------- */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: rgba(79, 70, 229, 0.08);
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px; /* Pill shape */
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  transition: background-color var(--transition-speed);
+}
+
+.tag:hover {
+  background-color: rgba(79, 70, 229, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   7. LINKS & SOCIAL BUTTONS
+   Interactive list of links pointing to portfolio, GitHub, etc.
+   -------------------------------------------------------------------------- */
+.links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.link-button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-button);
+  padding: 1rem 1.25rem;
+  color: var(--text-primary);
+  transition: all var(--transition-speed);
+  gap: 1rem;
+}
+
+.link-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--primary-color);
+  transition: transform var(--transition-speed);
+}
+
+.link-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.link-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.link-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.arrow {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+/* Interactive states for links */
+.link-button:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(79, 70, 229, 0.03);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.link-button:hover .arrow {
+  transform: translateX(4px);
+  color: var(--primary-color);
+}
+
+.link-button:hover .link-icon {
+  transform: scale(1.1);
+}
+
+.link-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   8. EXPERIENCE, EDUCATION, ACHIEVEMENTS & LIST STYLES
+   -------------------------------------------------------------------------- */
+.skill-group {
+  margin-bottom: 1.25rem;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-group-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.experience-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experience-item {
+  position: relative;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.exp-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.exp-role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.exp-company {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.exp-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.exp-category-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0.85rem 0 0.4rem;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.bullet-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.25rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.simple-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.simple-item {
+  padding: 0.85rem 1rem;
+  background-color: rgba(79, 70, 229, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-button);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all var(--transition-speed);
+}
+
+.simple-item:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(79, 70, 229, 0.05);
+}
+
+.simple-item-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.simple-item-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   9. FOOTER
+   -------------------------------------------------------------------------- */
+.footer {
+  text-align: center;
+  padding: 1.5rem 0 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   9. DARK MODE (AUTOMATIC)
+   Automatically matches the user's system preferences (dark or light theme).
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page: #0b0f19;
+    --bg-card: #151d2f;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary-color: #818cf8;
+    --primary-hover: #a5b4fc;
+    --border-color: #1e293b;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+    --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  }
+
+  .avatar {
+    border-color: var(--bg-card);
+    box-shadow: 0 10px 25px -5px rgba(129, 140, 248, 0.25);
+  }
+
+  .tag {
+    background-color: rgba(129, 140, 248, 0.12);
+    border-color: rgba(129, 140, 248, 0.25);
+  }
+
+  .tag:hover {
+    background-color: rgba(129, 140, 248, 0.2);
+  }
+
+  .link-button:hover {
+    background-color: rgba(129, 140, 248, 0.06);
+    border-color: var(--primary-color);
+  }
+
+  .simple-item {
+    background-color: rgba(129, 140, 248, 0.05);
+  }
+
+  .simple-item:hover {
+    background-color: rgba(129, 140, 248, 0.1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. RESPONSIVE TWEAKS (MOBILE SCREENS)
+   Makes sure padding and font sizes adjust comfortably on small phones.
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  body {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .profile-name {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .link-button {
+    padding: 0.85rem 1rem;
+  }
+}
